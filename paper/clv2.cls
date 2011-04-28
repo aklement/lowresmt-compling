@@ -815,7 +815,7 @@
 \def\@ssect#1#2#3#4#5{\@tempskipa #3\relax
    \ifdim \@tempskipa>\z@
      \begingroup #4\@hangfrom{\hskip #1}{\interlinepenalty \@M #5\par}\endgroup
-   \else \def\@svsechd{#4\hskip #1\relax #5\@afterhead}\fi
+   \else \def\@svsechd{#4\hskip #1\relax #5\@afterhead\null}\fi
     \@xsect{#3}}
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%  Lists Variable Initialisation %%%%%%%%%%%%%%%%%%%%%%%
@@ -1587,7 +1587,7 @@
 \def\checkcomma#1{\expandafter\@checkcomma#1,\@}
 \def\@checkcomma#1,#2\@{\def\argone{#2}\ifx\argone\@empty\else\gdef\multicite{true}\fi}
 % don't box citations, add space between multiple citations, separate with ;
-\def\@citex[#1]#2{\if@filesw\immediate\write\@auxout{\string\citation{#2}}\fi
+\def\@citex[#1]#2{\leavevmode\if@filesw\immediate\write\@auxout{\string\citation{#2}}\fi
   \def\@citea{}%
   \checkcomma{#2}%
 %  \ifx\multicite\TRUE
@@ -1958,7 +1958,7 @@
    \ackfont}
 \def\endacknowledgments{\par}
 %
-\newenvironment{displaytext}{\par\addvspace{14pt plus2pt}\bgroup\sffamily\small\hangindent18pt\parindent\z@\let\sc\scshape\let\it\itshape\mathversion{sfnormal}\let\boldmath\sfboldmath}{\par\egroup\addvspace{12pt plus2pt}\@endparenv}
+\newenvironment{displaytext}{\par\addvspace{14pt plus2pt}\bgroup\hangindent18pt\parindent\z@\let\sc\scshape\let\it\itshape}{\par\egroup\addvspace{12pt plus2pt}\@endparenv}
 %
 \newenvironment{algorithm}{\par\list{}{\leftmargin\z@\labelwidth\z@\labelsep\z@\itemsep6pt\topsep12pt plus2pt
                         \let\makelabel\algorithmlabel}}{\endlist}
